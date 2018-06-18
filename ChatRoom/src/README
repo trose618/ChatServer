@@ -1,0 +1,5 @@
+# T-Chat
+
+T Chat is a project I began on my own as a challenge for myself to grow with my use of threads as well as client/server protocol.
+
+It's a very simple chat server containing a server class and client class. Run the Chat Server first, then the client. Enter the server info to connect when starting up the Chat Client. Requires internet connection.

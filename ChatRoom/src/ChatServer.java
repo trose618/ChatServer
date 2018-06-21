@@ -52,8 +52,8 @@ public class ChatServer {
 
 	}// end of main
 
-	public static ServerSocket socket_;
-	public static Socket connection_;
+	public static ServerSocket socket_;//for hosting. allows other sockets to connect to this one.
+	public static Socket connection_;//holds reader/writer for receiving/sending messages
 	public static ArrayList<Socket> connections_ = new ArrayList<Socket>();//holds list of sockets/clients connected to the server
 
 	/**

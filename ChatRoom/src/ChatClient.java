@@ -35,6 +35,7 @@ public class ChatClient {
 			System.out.println("started new chatclient incoming thread.");
 			
 			
+			
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

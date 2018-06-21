@@ -33,7 +33,7 @@ public class TChat extends JPanel {
 	private JTextField textBox_;//holds text entered by client
 	private static JTextArea chatBox_;//area where chat messages are displayed
 	private final static String newline = "\n";
-	private static JScrollPane pane_;//
+	private static JScrollPane pane_;//panel that holds the chatBox so chat auto scrolls when messages reach bottom of chat window
 
 	/**
 	 * Constructor that generates the window for client to see and write in chat.

@@ -8,7 +8,12 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
-
+/**
+ * 
+ * @author Terrance Rose Jr.
+ *
+ *This is the ChatServer class which is used to host the chat server.
+ */
 public class ChatServer {
 
 	public static void main(String args[]) throws InterruptedException {
@@ -27,7 +32,6 @@ public class ChatServer {
 				Socket connection_ = socket_.accept();
 				sendToAll("New person joined.");
 				Thread.sleep(2000);
-				// System.out.println("about to start reading thread.");
 				IncomingMessages messages = new IncomingMessages(connection_);
 				connections_.add(connection_);
 				try {
@@ -50,16 +54,28 @@ public class ChatServer {
 
 	public static ServerSocket socket_;
 	public static Socket connection_;
-	public static ArrayList<Socket> connections_ = new ArrayList<Socket>();
+	public static ArrayList<Socket> connections_ = new ArrayList<Socket>();//holds list of sockets/clients connected to the server
 
+	/**
+	 * Gets the IP Address the server is being hosted on
+	 * @return the IP Address of the server
+	 */
 	public static InetAddress getSocketAddress() {
 		return socket_.getInetAddress();
 	}
 
+	/**
+	 * gets the port number of the server
+	 * @return the port number of the server
+	 */
 	public static int getPort() {
 		return socket_.getLocalPort();
 	}
 
+	/**
+	 * Sends a message to all clients connected to the server
+	 * @param message - message to be sent
+	 */
 	public static void sendToAll(String message) {
 
 		for (Socket curr : connections_) {
@@ -75,6 +91,12 @@ public class ChatServer {
 		}
 	}
 
+	/**
+	 * 
+	 * @author Terrance Rose Jr.
+	 *
+	 * Thread class which displays the info for connecting to the server
+	 */
 	public static class DisplayServerInfo extends Thread implements Runnable {
 
 		@Override
@@ -84,7 +106,14 @@ public class ChatServer {
 					"Server Info", JOptionPane.INFORMATION_MESSAGE, null);
 		}
 	}
-
+	
+	/**
+	 * 
+	 * @author Terrance Rose Jr.
+	 * 
+	 * Thread class for receiving messages from clients
+	 *
+	 */
 	public static class IncomingMessages extends Thread implements Runnable {
 		BufferedReader in_;
 
@@ -102,7 +131,6 @@ public class ChatServer {
 			try {
 
 				while (true) {
-					// Thread.sleep(1000);
 					String message;
 					message = in_.readLine();
 					if (message == null) {

@@ -20,16 +20,26 @@ import javax.swing.JTextField;
 import javax.swing.text.AttributeSet.CharacterAttribute;
 import javax.swing.text.DefaultCaret;
 
+/**
+ * TChat is the client side of the program used by those wishing to connect to the chat server
+ * @author Terrance Rose Jr.
+ *
+ */
 public class TChat extends JPanel {
 
-	private JFrame mainFrame_ = new JFrame();
+	private JFrame mainFrame_ = new JFrame();//window that holds the panel displaying the chat
 	private JPanel mainMenu;
-	private static ChatClient client_;
-	JTextField textBox_;
-	static JTextArea chatBox_;
+	private static ChatClient client_;//the client's connection to the chat server
+	private JTextField textBox_;//holds text entered by client
+	private static JTextArea chatBox_;//area where chat messages are displayed
 	private final static String newline = "\n";
-	private static JScrollPane pane_;
+	private static JScrollPane pane_;//
 
+	/**
+	 * Constructor that generates the window for client to see and write in chat.
+	 * @param hostID ip address of the chat server
+	 * @param port port number of the chat server
+	 */
 	public TChat(String hostID, int port) {
 		super();
 		mainFrame_.setLayout(new BorderLayout());
@@ -62,6 +72,11 @@ public class TChat extends JPanel {
 
 	}
 
+	/**
+	 * Sends message to server when mouse click is detected
+	 * @author Terrance Rose Jr.
+	 *
+	 */
 	private class SendClickMouseListener implements MouseListener {
 
 		@Override
@@ -98,6 +113,11 @@ public class TChat extends JPanel {
 
 	}
 
+	/**
+	 * Sends message to server when "enter" key has been pressed
+	 * @author Terrance Rose Jr.
+	 *
+	 */
 	private class KeyPressedActionListener implements KeyListener {
 
 		@Override
@@ -124,6 +144,11 @@ public class TChat extends JPanel {
 
 	}
 
+	/**
+	 * Thread class that receives messages from server and displays it in client's chat window
+	 * @author Terrance Rose Jr.
+	 *
+	 */
 	public static class IncomingMessages extends Thread implements Runnable {
 
 		public IncomingMessages(ChatClient client) {

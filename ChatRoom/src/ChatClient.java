@@ -9,6 +9,11 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
+/**
+ * This class represents a client connection to the chat server
+ * @author Terrance Rose Jr.
+ *
+ */
 public class ChatClient {
 
 	private static PrintWriter out_;
@@ -50,6 +55,11 @@ public class ChatClient {
 		}
 	}
 	
+	/**
+	 * Thread that receives messages from the server
+	 * @author Terrance Rose Jr.
+	 *
+	 */
 	public static class IncomingMessages extends Thread implements Runnable {
 		
 
@@ -94,10 +104,18 @@ public class ChatClient {
 		name_ = name;
 	}
 	
+	/**
+	 * Returns name of client
+	 * @return user's name
+	 */
 	public String getName() {
 		return name_;
 	}
 	
+	/**
+	 * Returns Client's BufferedReader
+	 * @return client's BufferedReader
+	 */
 	public BufferedReader getReader() {
 		return in_;
 	}

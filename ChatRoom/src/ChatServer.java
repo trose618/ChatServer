@@ -8,11 +8,12 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
+
 /**
  * 
  * @author Terrance Rose Jr.
  *
- *This is the ChatServer class which is used to host the chat server.
+ *         This is the ChatServer class which is used to host the chat server.
  */
 public class ChatServer {
 
@@ -23,7 +24,7 @@ public class ChatServer {
 			System.out.println(
 					"\r\nRunning Server: " + "Host=" + getSocketAddress().getHostAddress() + " Port=" + getPort());
 			System.out.println("ChatServer Running...");
-			
+
 			DisplayServerInfo info = new DisplayServerInfo();
 			info.start();
 
@@ -52,12 +53,14 @@ public class ChatServer {
 
 	}// end of main
 
-	public static ServerSocket socket_;//for hosting. allows other sockets to connect to this one.
-	public static Socket connection_;//holds reader/writer for receiving/sending messages
-	public static ArrayList<Socket> connections_ = new ArrayList<Socket>();//holds list of sockets/clients connected to the server
+	public static ServerSocket socket_;// for hosting. allows other sockets to connect to this one.
+	public static Socket connection_;// holds reader/writer for receiving/sending messages
+	public static ArrayList<Socket> connections_ = new ArrayList<Socket>();// holds list of sockets/clients connected to
+																			// the server
 
 	/**
 	 * Gets the IP Address the server is being hosted on
+	 * 
 	 * @return the IP Address of the server
 	 */
 	public static InetAddress getSocketAddress() {
@@ -66,6 +69,7 @@ public class ChatServer {
 
 	/**
 	 * gets the port number of the server
+	 * 
 	 * @return the port number of the server
 	 */
 	public static int getPort() {
@@ -74,7 +78,9 @@ public class ChatServer {
 
 	/**
 	 * Sends a message to all clients connected to the server
-	 * @param message - message to be sent
+	 * 
+	 * @param message
+	 *            - message to be sent
 	 */
 	public static void sendToAll(String message) {
 
@@ -95,7 +101,7 @@ public class ChatServer {
 	 * 
 	 * @author Terrance Rose Jr.
 	 *
-	 * Thread class which displays the info for connecting to the server
+	 *         Thread class which displays the info for connecting to the server
 	 */
 	public static class DisplayServerInfo extends Thread implements Runnable {
 
@@ -106,12 +112,12 @@ public class ChatServer {
 					"Server Info", JOptionPane.INFORMATION_MESSAGE, null);
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @author Terrance Rose Jr.
 	 * 
-	 * Thread class for receiving messages from clients
+	 *         Thread class for receiving messages from clients
 	 *
 	 */
 	public static class IncomingMessages extends Thread implements Runnable {
